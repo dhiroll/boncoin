@@ -1,52 +1,60 @@
 <% include partials/header.ejs %>
-<% include partials/menu.ejs %>
-<div class="container">
-    <form enctype="multipart/form-data" action="/upload" method="post" >
-        <div class="blocTitle">
-            <h3>Votre annonce</h3>
-            <div class="form-group">
-                <label for="titleAnnounce">Titre de l'annonce</label>
-                <input type="text" name="title" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="textAnnounce">Texte de l'annonce</label>
-                <input type="text" name="textAnnounce" class="form-control" >
-            </div>
-            <div class="form-group">
-                <label for="priceAnnounce">Prix</label>
-                <input type="number" name="price" class="form-control">
-            </div>
-            <div class="form-group">
-                <label for="photoAnnounce">Photo</label>
-                <input type="file" name="picture" class="form-control-file">
-            </div>
+    <% include partials/menu.ejs %>
+        <div class="container">
+            <form enctype="multipart/form-data" action="/upload" method="post">
+                <div class="blocTitle">
+                    <h3>Votre annonce</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="titleAnnounce">Titre de l'annonce</label>
+                            <input type="text" name="title" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="textAnnounce">Texte de l'annonce</label>
+                            <input type="text" name="textAnnounce" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="priceAnnounce">Prix</label>
+                            <input type="number" name="price" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="photoAnnounce">Photo</label>
+                            <input type="file" name="picture" class="form-control-file">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocTitle">
+                    <h3>Localisation</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="positionCity">Ville ou code postal</label>
+                            <input type="text" name="city" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocTitle">
+                    <h3>Vos informations</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="nickName">Pseudo</label>
+                            <input type="text" name="nickName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAnnounce">Email</label>
+                            <input type="email" name="emailAnnounce" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Téléphone</label>
+                            <input type="number" name="phoneNumber" class="form-control">
+                        </div>
+                    </div>
+                </div>
+              
+                <button type="submit" class="btn btn-submit">Valider</button>
+                
+            </form>
         </div>
 
-        <div class="blocTitle">
-            <h3>Localisation</h3>
-            <div class="form-group">
-                    <label for="positionCity">Ville ou code postal</label>
-                    <input type="text" name="city" class="form-control">
-            </div>    
-        </div>
-
-        <div class="blocTitle">
-            <h3>Vos informations</h3>
-            <div class="form-group">
-                <label for="textAnnounce">Pseudo</label>
-                <input type="text" name="pseudo" class="form-control" >
-            </div>
-            <div class="form-group">
-                <label for="emailAnnounce">Email</label>
-                <input type="email" name="emailAnnounce"class="form-control" >
-            </div>
-            <div class="form-group">
-                <label for="phoneNumber">Téléphone</label>
-                <input type="number" name="phoneNumber" class="form-control" >
-            </div>              
-        </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
-    </form>
-</div>
-
-<% include partials/footer.ejs %>
+        <% include partials/footer.ejs %>

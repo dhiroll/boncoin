@@ -56,9 +56,24 @@ footer {
     background-color: #666666;
     height: 60px;
     margin-top: 30px;
+    margin-bottom: 0;
 }
 
 footer .wording {
     color: white;
     padding-top: 20px;
+}
+.blocAnnounce{
+    background-color: white;
+    border: 1px solid #cccccc;
+    padding: 30px;
+    margin:20px;
+    
+}
+.announceDetails{
+    background-color: white;
+    border: 1px solid #cccccc;
+    padding: 30px;
+    margin:20px;
+    
 }

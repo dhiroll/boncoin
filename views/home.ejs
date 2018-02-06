@@ -1,9 +1,29 @@
 <% include partials/header.ejs %>
-<% include partials/menu.ejs %>
+    <% include partials/menu.ejs %>
+
+        <div class="container">
+
+            <div class="row">
+               
+                <% for (var i = 0; i < announces.length; i++) { %>
+                    <%= announces[i].id %>
+                    <%= announces[i].title_name %>
+                    <%= announces[i].photo_url %>
+                    <%= announces[i].nick_name %>
+                    <%= announces[i].price %>
+                    <%= announces[i].city %>
+                    <%= announces[i].description %>
+                    <%= announces[i].phone_number %>
+                    <%= announces[i].user_email %>
+                    
+                <% } %>
+              
+               
+            </div>
+        </div>
+        </div>
 
 
 
 
-
-
-<% include partials/footer.ejs %>
+        <% include partials/footer.ejs %>

@@ -15,18 +15,21 @@ var _ = require('lodash/core');
 var announces = [];
 var idCounter = 0;
 
-app.get('/', function (req, res) {
-  res.render('home.ejs');
+
+/* Voir la liste de tous les étudiants */
+app.get("/", function(req, res) {
+  res.render("home.ejs",{
+      announce: announces
+  });
+  
 });
 
 app.get('/deposer', function (req, res) {
-  res.render('createAnnounce.ejs');
+  res.render('createAnnounce.ejs'),
+  announce = announces;
 });
 
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
-
- 
-
   var title_name = req.body.title_name;
   var photo_url = req.file.filename;
   var nick_name = req.body.nick_name;
@@ -34,6 +37,7 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
   var city = req.body.city;
   var description = req.body.description;
   var phone_number = req.body.phone_number;
+  var user_email = req.body.user_email;
  
   var newAnnounce = {
     id: idCounter,
@@ -43,22 +47,19 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
     price: price,
     city: city,
     description: description,
-    phone_number: phone_number
-  
+    phone_number: phone_number,
+    user_email: user_email
   };
-
   idCounter++;
 
-  announces.push(newAnnounce);
-
-  // Push the new profile to the students array
+  announces.push(newAnnounce); 
   res.redirect('/annonce/' + newAnnounce.id);
 });
 
 app.get('/annonce/:id', function (req, res) {
 
   var id = parseInt(req.params.id);
-s
+
   for (var i = 0; i < announces.length; i++) {
     if (announces[i].id === id) {
       return res.render('viewAnnounce.ejs', {  
@@ -69,7 +70,8 @@ s
         price: announces[i].price,
         city: announces[i].city,
         description: announces[i].description,
-        phone_number:announces[i].phone_number
+        phone_number:announces[i].phone_number,
+        user_email:announces[i].user_email
        
       });
     }

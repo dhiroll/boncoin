@@ -66,7 +66,7 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
     if (err) {
       console.log("something went wrong");
     } else {
-      console.log("we just saved the new announce " + obj.title_name);
+      console.log("we just saved the new announce ");
 
 
       res.redirect('/annonce/' + adAnnounce._id);

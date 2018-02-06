@@ -1,32 +1,61 @@
 <% include partials/header.ejs %>
     <% include partials/menu.ejs %>
         <div class="container">
-            <div class="row-offcanvas row-offcanvas-right sectionAnnounce">
-                <div class="blocAnnounce col-8 col-md-8"> 
-                    <div class="row ">
-                        <div class="col-md-12">
-                            <h2><%= title_name %></h2>
-                            <div class=""><img class="img-fluid" src='/uploads/<%= photo_url %>' alt='photo' /></div> 
-                            <div class=""><%= nick_name%></div>
-                            <div class="row">
-                                <div class="col-md-2 bgBloc">Prix</div>
-                                <div class="col-md-10"><%= price %></div>
+            <div class="row sectionAnnounce">
+                <div class="blocAnnounce col-md-7">
+                    <div class="col-md-12">
+                        <h2>
+                            <%= title_name %>
+                        </h2>
+                        <div class="center blocImg">
+                            <img class="img-fluid" src='/uploads/<%= photo_url %>' alt='photo' />
+                        </div>
+                        <div class="row borderBoxTop">
+                            <div class="col-md-12 pseudo">
+                                <p>
+                                    <%= nick_name%>
+                                </p>
                             </div>
-                            <div class="row">
-                                <div class="col-md-2 bgBloc">Ville</div>
-                                <div class="col-md-10"><%= city %></div>
+                        </div>
+                        <div class="row borderBoxTop">
+                            <div class="col-md-2 bgBloc">Prix</div>
+                            <div class="col-md-10">
+                                <p>
+                                    <%= price %>
+                                </p>
                             </div>
-                            <div class="">Description<p><%= description %></p></div>
+                        </div>
+                        <div class="row borderBoxTop borderBoxBottom">
+                            <div class="col-md-2 bgBloc">Ville</div>
+                            <div class="col-md-10">
+                                <p>
+                                    <%= city %>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="description">Description
+                            <p>
+                                <%= description %>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="announceDetails col-4 col-md-4 sidebar-offcanvas">
-                   
-                        <div class="bgName"><span class="p-2"><%= nick_name%></span></div>   
-                        <div class="p-2"><button>Voir le numéro</button></div>
-                        <div class="p-2 replacePhoneNumb"><%= phone_number %></div>
-                  
-                </div>        
-             </div>
-        </div>        
-        <% include partials/footer.ejs %>
+
+
+                    <div class="announceDetails col-md-4">
+                        <div class="bgName">
+                            <span class="p-2 center">
+                                <%= nick_name%>
+                            </span>
+                        </div>
+                        <div class="p-2 center">
+                            <button type="button" class="btn btnNumber">Voir le numéro</button>
+                        </div>
+                       <!--  <div class="p-2 replacePhoneNumb center">
+                            <%= phone_number %>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <% include partials/footer.ejs %>

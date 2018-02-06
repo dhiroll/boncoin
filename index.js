@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var multer = require('multer');
 var upload = multer({ dest: "public/uploads/" });
+var idCounter = 0;
 
 app.use(express.static('public'));
 
@@ -15,11 +16,10 @@ var _ = require('lodash/core');
 var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/loboncoin");
 
-
-var announceSchema = new mongoose.Schema({
+var announcesSchema = new mongoose.Schema({
   id: String,
   title_name : String,
-  photo_url: ImageData,
+  photo_url: String,
   nick_name: String,
   price: Number,
   city: String,
@@ -31,36 +31,9 @@ var announceSchema = new mongoose.Schema({
 
 var Announces = mongoose.model("Announces", announcesSchema);
 
-announces.save(function(err, obj) {
-  if (err) {
-    // something went wrong
-    console.log(err);
-  } else {
-    console.log("we just saved the new Announce " + obj.title_name);
-
-    Announces.find({}, function(err, students) {
-      if (!err) {
-        console.log(announces);
-      }
-    });
-  }
-});
-
-var announces = [];
-var idCounter = 0;
-
-
-/* Voir la liste de tous les étudiants */
-app.get("/", function(req, res) {
-  res.render("home.ejs",{
-      announces: announces
-  });
-  
-});
-
 app.get('/deposer', function (req, res) {
   res.render('createAnnounce.ejs'),
-  announce = announces;
+  announces = announces;
 });
 
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
@@ -86,8 +59,34 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
   };
   idCounter++;
 
-  announces.push(newAnnounce); 
-  res.redirect('/annonce/' + newAnnounce.id);
+  /* announces.push(newAnnounce);  */
+  var adAnnounce = new Announces(newAnnounce);
+  
+  adAnnounce.save(function(err, obj) {
+    console.log(obj);
+    if (err) {
+      console.log("something went wrong");
+    } else {
+      console.log("we just saved the new announce " + obj.title_name);
+
+      Announces.find({}, function(err, adAnnounce) {
+        if (!err) {
+          console.log(adAnnounce);
+        }
+      });
+
+  res.redirect('/annonce/' + adAnnounce._id);
+    }
+  });
+});
+
+/* Voir la liste de toutes les annonces */
+app.get("/", function(req, res) {
+
+   res.render("home.ejs",{
+      announces: adAnnounce
+  }); 
+  
 });
 
 app.get('/annonce/:id', function (req, res) {

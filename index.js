@@ -54,7 +54,8 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
     city: city,
     description: description,
     phone_number: phone_number,
-    user_email: user_email
+    user_email: user_email,
+    
   };
   idCounter++;
 
@@ -82,7 +83,7 @@ app.get("/", function(req, res) {
       console.log(adAnnounce);
     }
     res.render("home.ejs",{
-      announces: adAnnounce
+      announces: adAnnounce   
     }); 
   });
   
@@ -102,7 +103,8 @@ app.get('/annonce/:id', function (req, res) {
           city: adAnnounce.city,
           description: adAnnounce.description,
           phone_number: adAnnounce.phone_number,
-          user_email: adAnnounce.user_email
+          user_email: adAnnounce.user_email,
+          publish_date: adAnnounce.created
         });
       });
 

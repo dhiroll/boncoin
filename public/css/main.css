@@ -104,6 +104,13 @@ footer .wording {
     margin-top :40px;
     margin-bottom: 40px;
 }
+h1{
+    color: #989898;
+    font-family: "OpenSansBold",sans-serif;
+    font-size: 18px;
+    margin: 20px 0;    
+}
+
 h2{
     padding: 10px 0;
 }
@@ -123,6 +130,25 @@ p{
 }
 .description p{
     padding-top: 20px;
+}
+.thumbnail{
+    overflow: hidden;
+    width: 25%;
+    min-width: 130px;
+    max-height: 120px;
+    max-height: 100%;
+    background: #f2f2f2;
+}
+.price{
+    color: #F56B2A;
+    font-weight: bold;
+    font-size: 18px;
+    padding-left: 20px;
+}
+.blocRight h2{
+    color: #3872BB;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 @media (max-width: 767px) { 

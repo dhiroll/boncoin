@@ -1,23 +1,29 @@
 <% include partials/header.ejs %>
     <% include partials/menu.ejs %>
-
         <div class="container">
-     
-            
-                   
-
-            <div class="row blocForm">            
-                <% for (var i = 0; i < announces.length; i++) { %>
-                  <div class="p-2"><%= announces[i].title_name %></div>
-                  <div class="p-2 thumbnail"><img class="img-fluid" src='/uploads/<%= announces[i].photo_url %>' alt='photo' /></div> 
-                  <div class="p-2"><%= announces[i].price %></div>
-                  <div class="p-2"><%= announces[i].city %></div>                         
-                <% } %>       
+            <div class="row">
+                <div class ="col-md-8" >
+                    <h1>Annonces : Ile-de-France</h1> 
+                    <ul class="list-group">
+                        <% for (var i = 0; i < announces.length; i++) { %>
+                            <li class="list-group-item justify-content-between"> 
+                                <div class = "row">       
+                                    <div class="p-2 thumbnail col-md-4">
+                                        <img class="img-fluid" src='/uploads/<%= announces[i].photo_url %>' alt='photo' />
+                                    </div> 
+                                    <div class="blocRight col-md-8">
+                                        <div class="p-2"><h2><%= announces[i].title_name %></h2></div>    
+                                        <div class="p-2"><%= announces[i].city %></div>
+                                        <div class="row" > 
+                                            <div class=" col-md-6 price"><%= announces[i].price %>€</div>                               <div class=" col-md-6 badge"><%= announces[i].created%></div>
+                                        </div>
+                                       
+                                    </div>
+                                </div>  
+                            </li>   
+                        <% } %>   
+                    </ul>            
+                </div>         
             </div>
         </div>
-        </div>
-
-
-
-
-        <% include partials/footer.ejs %>
+    <% include partials/footer.ejs %>

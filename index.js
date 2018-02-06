@@ -32,8 +32,7 @@ var announcesSchema = new mongoose.Schema({
 var Announces = mongoose.model("Announces", announcesSchema);
 
 app.get('/deposer', function (req, res) {
-  res.render('createAnnounce.ejs'),
-  announces = announces;
+  res.render('createAnnounce.ejs')
 });
 
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
@@ -69,13 +68,8 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
     } else {
       console.log("we just saved the new announce " + obj.title_name);
 
-      Announces.find({}, function(err, adAnnounce) {
-        if (!err) {
-          console.log(adAnnounce);
-        }
-      });
 
-  res.redirect('/annonce/' + adAnnounce._id);
+      res.redirect('/annonce/' + adAnnounce._id);
     }
   });
 });
@@ -83,9 +77,14 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
 /* Voir la liste de toutes les annonces */
 app.get("/", function(req, res) {
 
-   res.render("home.ejs",{
+  Announces.find({}, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    }
+    res.render("home.ejs",{
       announces: adAnnounce
-  }); 
+    }); 
+  });
   
 });
 
@@ -93,18 +92,18 @@ app.get('/annonce/:id', function (req, res) {
 
   var id = parseInt(req.params.id);
 
-  for (var i = 0; i < announces.length; i++) {
-    if (announces[i].id === id) {
+  for (var i = 0; i < adAnnounce.length; i++) {
+    if (adAnnounce[i]._id === id) {
       return res.render('viewAnnounce.ejs', {  
-        id: announces[i].id,
-        title_name: announces[i].title_name,
-        photo_url: announces[i].photo_url,
-        nick_name: announces[i].nick_name,
-        price: announces[i].price,
-        city: announces[i].city,
-        description: announces[i].description,
-        phone_number:announces[i].phone_number,
-        user_email:announces[i].user_email
+        id: adAnnounce[i].id,
+        title_name: adAnnounce[i].title_name,
+        photo_url: adAnnounce[i].photo_url,
+        nick_name: adAnnounce[i].nick_name,
+        price: adAnnounce[i].price,
+        city: adAnnounce[i].city,
+        description: adAnnounce[i].description,
+        phone_number: adAnnounce[i].phone_number,
+        user_email: adAnnounce[i].user_email
        
       });
     }

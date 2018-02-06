@@ -89,26 +89,23 @@ app.get("/", function(req, res) {
 });
 
 app.get('/annonce/:id', function (req, res) {
-
-  var id = parseInt(req.params.id);
-
-  for (var i = 0; i < adAnnounce.length; i++) {
-    if (adAnnounce[i]._id === id) {
-      return res.render('viewAnnounce.ejs', {  
-        id: adAnnounce[i].id,
-        title_name: adAnnounce[i].title_name,
-        photo_url: adAnnounce[i].photo_url,
-        nick_name: adAnnounce[i].nick_name,
-        price: adAnnounce[i].price,
-        city: adAnnounce[i].city,
-        description: adAnnounce[i].description,
-        phone_number: adAnnounce[i].phone_number,
-        user_email: adAnnounce[i].user_email
-       
+  var id = req.params.id;
+  Announces.findById(id, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    } 
+      res.render('viewAnnounce.ejs', {  
+          title_name: adAnnounce.title_name,
+          photo_url: adAnnounce.photo_url,
+          nick_name: adAnnounce.nick_name,
+          price: adAnnounce.price,
+          city: adAnnounce.city,
+          description: adAnnounce.description,
+          phone_number: adAnnounce.phone_number,
+          user_email: adAnnounce.user_email
+        });
       });
-    }
-  }
-  return res.status(404).send('Not found');
+
 });
 
 app.listen(3000, function () {

@@ -3,22 +3,13 @@
 
         <div class="container">
 
-            <div class="row">
-               
+            <div class="row blocForm">            
                 <% for (var i = 0; i < announces.length; i++) { %>
-                    <%= announces[i].id %>
-                    <%= announces[i].title_name %>
-                    <%= announces[i].photo_url %>
-                    <%= announces[i].nick_name %>
-                    <%= announces[i].price %>
-                    <%= announces[i].city %>
-                    <%= announces[i].description %>
-                    <%= announces[i].phone_number %>
-                    <%= announces[i].user_email %>
-                    
-                <% } %>
-              
-               
+                  <div class="p-2"><%= announces[i].title_name %></div>
+                  <div class="p-2 thumbnail"><img class="img-fluid" src='/uploads/<%= announces[i].photo_url %>' alt='photo' /></div> 
+                  <div class="p-2"><%= announces[i].price %></div>
+                  <div class="p-2"><%= announces[i].city %></div>                         
+                <% } %>       
             </div>
         </div>
         </div>

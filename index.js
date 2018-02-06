@@ -12,6 +12,40 @@ var _ = require('lodash');
 // Load the core build.
 var _ = require('lodash/core');
 
+var mongoose = require("mongoose");
+mongoose.connect("mongodb://localhost:27017/loboncoin");
+
+
+var announceSchema = new mongoose.Schema({
+  id: String,
+  title_name : String,
+  photo_url: ImageData,
+  nick_name: String,
+  price: Number,
+  city: String,
+  description: String,
+  phone_number: Number,
+  user_email: String,
+  created: { type: Date, default: Date.now }
+});
+
+var Announces = mongoose.model("Announces", announcesSchema);
+
+announces.save(function(err, obj) {
+  if (err) {
+    // something went wrong
+    console.log(err);
+  } else {
+    console.log("we just saved the new Announce " + obj.title_name);
+
+    Announces.find({}, function(err, students) {
+      if (!err) {
+        console.log(announces);
+      }
+    });
+  }
+});
+
 var announces = [];
 var idCounter = 0;
 
@@ -19,7 +53,7 @@ var idCounter = 0;
 /* Voir la liste de tous les étudiants */
 app.get("/", function(req, res) {
   res.render("home.ejs",{
-      announce: announces
+      announces: announces
   });
   
 });

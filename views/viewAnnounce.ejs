@@ -1,23 +1,32 @@
 <% include partials/header.ejs %>
     <% include partials/menu.ejs %>
-        <div class="container sectionAnnounce d-flex flex-row">
-            
-          
-                <div class="flex-column blocAnnounce col-md-8 col-xs-12"> 
-                    <div class="p-2"> <h2><%= title_name %></h2></div>
-                    <div class="p-2"><img class="img-fluid" src='/uploads/<%= photo_url %>' alt='photo' /></div> 
-                    <div class="p-2"><%= nick_name%></div>
-                    <div class="p-2"><%= price %></div>
-                    <div class="p-2"> <%= city %></div>
-                    <div class="p-2"> <%= description %></div>
-                </div>     
+        <div class="container">
+            <div class="row-offcanvas row-offcanvas-right sectionAnnounce">
+                <div class="blocAnnounce col-8 col-md-8"> 
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <h2><%= title_name %></h2>
+                            <div class=""><img class="img-fluid" src='/uploads/<%= photo_url %>' alt='photo' /></div> 
+                            <div class=""><%= nick_name%></div>
+                            <div class="row">
+                                <div class="col-md-2 bgBloc">Prix</div>
+                                <div class="col-md-10"><%= price %></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-2 bgBloc">Ville</div>
+                                <div class="col-md-10"><%= city %></div>
+                            </div>
+                            <div class="">Description<p><%= description %></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="announceDetails col-4 col-md-4 sidebar-offcanvas">
                    
-           
-                    <div class="flex-column align-self-start announceDetails col-md-4 col-xs-12">  
-                    <div class="p-2"><%= nick_name%></div>
-                    <div class="p-2"><%= phone_number %></div>
-                     
-            </div>
-         </div>
-
+                        <div class="bgName"><span class="p-2"><%= nick_name%></span></div>   
+                        <div class="p-2"><button>Voir le numéro</button></div>
+                        <div class="p-2 replacePhoneNumb"><%= phone_number %></div>
+                  
+                </div>        
+             </div>
+        </div>        
         <% include partials/footer.ejs %>

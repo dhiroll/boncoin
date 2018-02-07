@@ -114,8 +114,17 @@ app.get('/annonce/:id', function (req, res) {
 });
 
 app.get('/deposer/:id', function (req, res) {
+  var id = req.params.id;
+  res.render('modifyAnnounce.ejs',{
+    idAnnounce: id
+  })
+});
+app.post('/deposer/:id', upload.single('photo_url'), function (req, res){
   var modifyId = req.params.id;
-  Announces.findById(modifyId, function (err, adAnnounce) {
+   Announces.findById(modifyId, function (err, adAnnounce) {
+  if (!err) {
+    console.log(adAnnounce);
+   } 
     adAnnounce.title_name = req.body.title_name;
     adAnnounce.photo_url = req.file.filename;
     adAnnounce.nick_name = req.body.nick_name;
@@ -124,11 +133,11 @@ app.get('/deposer/:id', function (req, res) {
     adAnnounce.description = req.body.description;
     adAnnounce.phone_number = req.body.phone_number;
     adAnnounce.user_email = req.body.user_email;
-    adAnnounce.save(function (err, adAnnounce) {
-        if (err) return handleError(err);
-        res.send('modifyAnnounce.ejs');
-      });
-    });
+  adAnnounce.save(function (err, adAnnounce) {   
+    res.redirect('/');
+         });
+     });
+  });
 
 app.listen(3000, function () {
   console.log('Server started');

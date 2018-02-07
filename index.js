@@ -17,7 +17,6 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/loboncoin");
 
 var announcesSchema = new mongoose.Schema({
-  id: String,
   title_name : String,
   photo_url: String,
   nick_name: String,
@@ -35,7 +34,6 @@ app.get('/deposer', function (req, res) {
   res.render('createAnnounce.ejs')
 });
 
-
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
   var title_name = req.body.title_name;
   var photo_url = req.file.filename;
@@ -46,8 +44,7 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
   var phone_number = req.body.phone_number;
   var user_email = req.body.user_email;
  
-  var newAnnounce = {
-    id: idCounter,
+  var newAnnounce = { 
     title_name : title_name,
     photo_url: photo_url,
     nick_name: nick_name,
@@ -55,11 +52,9 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
     city: city,
     description: description,
     phone_number: phone_number,
-    user_email: user_email,
-    
+    user_email: user_email
   };
-  idCounter++;
-
+  
   /* announces.push(newAnnounce);  */
   var adAnnounce = new Announces(newAnnounce);
   
@@ -69,8 +64,6 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
       console.log("something went wrong");
     } else {
       console.log("we just saved the new announce ");
-
-
       res.redirect('/annonce/' + adAnnounce._id);
     }
   });
@@ -119,6 +112,7 @@ app.get('/deposer/:id', function (req, res) {
     idAnnounce: id
   })
 });
+
 app.post('/deposer/:id', upload.single('photo_url'), function (req, res){
   var modifyId = req.params.id;
    Announces.findById(modifyId, function (err, adAnnounce) {
@@ -139,6 +133,14 @@ app.post('/deposer/:id', upload.single('photo_url'), function (req, res){
      });
   });
 
+  app.get('/supprimer/:id', function (req, res) {
+    var id = req.params.id;  
+    Announces.remove({_id: id},function (err){
+      res.redirect('/');
+    });
+  });
+
+ 
 app.listen(3000, function () {
   console.log('Server started');
 });

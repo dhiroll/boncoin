@@ -1,0 +1,61 @@
+<% include partials/header.ejs %>
+    <% include partials/menu.ejs %>
+   
+        <div class="container">
+            <form enctype="multipart/form-data" action='/deposer' method="post">
+                <div class="blocTitle">
+                    <h3>Votre annonce</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="title_name">Titre de l'annonce</label>
+                            <input type="text" name="title_name" class="form-control" value="Iphone">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Texte de l'annonce</label>
+                            <input type="text" name="description" class="form-control" value="Je vends mon Iphone...">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Prix</label>
+                            <input type="number" name="price" class="form-control" value="400">
+                        </div>
+                        <div class="form-group">
+                            <label for="photo_url">Photo</label>
+                            <input type="file" name="photo_url" class="form-control-file">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocTitle">
+                    <h3>Localisation</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="city">Ville ou code postal</label>
+                            <input type="text" name="city" class="form-control" value="Paris">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blocTitle">
+                    <h3>Vos informations</h3>
+                    <div class="blocForm">
+                        <div class="form-group">
+                            <label for="nick_name">Pseudo</label>
+                            <input type="text" name="nick_name" class="form-control" value="Dhi">
+                        </div>
+                        <div class="form-group">
+                            <label for="user_email">Email</label>
+                            <input type="email" name="user_email" class="form-control" value="dhi@gmail.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Téléphone</label>
+                            <input type="number" name="phone_number" class="form-control" value="0909090900">
+                        </div>
+                    </div>
+                </div>
+              
+                <button type="submit" class="btn btn-submit">Valider</button>
+                
+            </form>
+        </div>
+
+        <% include partials/footer.ejs %>

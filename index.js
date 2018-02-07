@@ -35,6 +35,7 @@ app.get('/deposer', function (req, res) {
   res.render('createAnnounce.ejs')
 });
 
+
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
   var title_name = req.body.title_name;
   var photo_url = req.file.filename;
@@ -90,13 +91,14 @@ app.get("/", function(req, res) {
 });
 
 app.get('/annonce/:id', function (req, res) {
-  
+
   var id = req.params.id;
   Announces.findById(id, function(err, adAnnounce) {
     if (!err) {
       console.log(adAnnounce);
     } 
-      res.render('viewAnnounce.ejs', {  
+      res.render('viewAnnounce.ejs', { 
+          _id :adAnnounce._id,
           title_name: adAnnounce.title_name,
           photo_url: adAnnounce.photo_url,
           nick_name: adAnnounce.nick_name,
@@ -110,6 +112,23 @@ app.get('/annonce/:id', function (req, res) {
       });
 
 });
+
+app.get('/deposer/:id', function (req, res) {
+  var modifyId = req.params.id;
+  Announces.findById(modifyId, function (err, adAnnounce) {
+    adAnnounce.title_name = req.body.title_name;
+    adAnnounce.photo_url = req.file.filename;
+    adAnnounce.nick_name = req.body.nick_name;
+    adAnnounce.price = req.body.price;
+    adAnnounce.city = req.body.city;
+    adAnnounce.description = req.body.description;
+    adAnnounce.phone_number = req.body.phone_number;
+    adAnnounce.user_email = req.body.user_email;
+    adAnnounce.save(function (err, adAnnounce) {
+        if (err) return handleError(err);
+        res.send('modifyAnnounce.ejs');
+      });
+    });
 
 app.listen(3000, function () {
   console.log('Server started');

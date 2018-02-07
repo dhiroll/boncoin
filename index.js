@@ -90,6 +90,7 @@ app.get("/", function(req, res) {
 });
 
 app.get('/annonce/:id', function (req, res) {
+  
   var id = req.params.id;
   Announces.findById(id, function(err, adAnnounce) {
     if (!err) {

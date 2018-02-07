@@ -12,8 +12,12 @@
                         </div>
                         <div class="row borderBoxTop">
                             <div class="col-md-12 pseudo">
-                                <p> <%= nick_name%></p>  
-                                <p>Created on <%= publish_date%></p>
+                                <p>
+                                    <%= nick_name%>
+                                </p>
+                                <p>Created on
+                                    <%= publish_date%>
+                                </p>
                             </div>
                         </div>
                         <div class="row borderBoxTop">
@@ -41,20 +45,34 @@
                 </div>
 
 
-                    <div class="announceDetails col-md-4">
+                <div class="col-md-4 sidebar center">
+                    <div class="row announceDetails ">
                         <div class="bgName">
                             <span class="p-2 center">
                                 <%= nick_name%>
                             </span>
                         </div>
-                        <div class="p-2 center">
+                        <div class="p-2 center mx-auto">
                             <button type="button" class="btn btnNumber">Voir le numéro</button>
                         </div>
-                       <!--  <div class="p-2 replacePhoneNumb center">
-                            <%= phone_number %>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
+                        <!--  <div class="p-2 replacePhoneNumb center">
+                                        <%= phone_number %>
+                                    </div> -->
+                    </div><!-- end announceDetails -->
+                    <div class="row announceModify">
+                        <div class="bgName">
+                            <span class="p-2 center">
+                                 Modifier l'annonce
+                            </span>
+                        </div>
+                        <div class="p-2 center mx-auto">
+                            <button type="button" class="btn btnModify">Modifier</button>
+                            <button type="button" class="btn btnDelete">Supprimer</button>
+                        </div>    
+                    </div><!-- end announceModify -->
+                </div><!-- end sidebar -->
 
-            <% include partials/footer.ejs %>
+            </div>
+        </div>
+
+        <% include partials/footer.ejs %>

@@ -3,17 +3,7 @@ body {
     font-size: 13px;
     background-color: #FAFAFA;
 }
-
-.orange {
-    background-color: #F56B2A;
-    height: 60px;
-}
-.btnNumber{
-    background-color: #F56B2A;
-    color: white;
-    padding: 10px 100px;
-}
-
+/* Menu Navbar */
 .navbar-light .navbar-nav .nav-link {
     color: white;
     font-size: 13px;
@@ -25,16 +15,55 @@ body {
     color: white;
     text-decoration: underline;
 }
+
+.logo {
+    width: 70px;
+    height: 60px;
+}
+
+.orange {
+    background-color: #F56B2A;
+    height: 60px;
+}
+
+/* Buttons */
+.btnNumber{
+    background-color: #F56B2A;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+.btnModify{
+    background-color:#336699;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 5px;
+}
+.btnDelete{
+    background-color:grey;
+    color :white;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 5px;
+}
+
 .btn-submit {
     background-color: #4183D7;
     height: 40px;
     padding: 0 70px 0 70px;
     color: white;
 }
+/* Semantic tags */
+h1{
+    color: #989898;
+    font-family: "OpenSansBold",sans-serif;
+    font-size: 18px;
+    margin: 20px 0;    
+}
 
-.logo {
-    width: 70px;
-    height: 60px;
+h2{
+    padding: 10px 0;
 }
 
 h3 {
@@ -46,7 +75,23 @@ h3 {
     line-height: 50px;
     margin: 0;
 }
-
+p{
+    margin: 0;
+    padding: 0;
+}
+/* Texts */
+.center{
+text-align: center;
+}
+/* Images */
+.thumbnail{
+    overflow: hidden;
+    width: 25%;
+    min-width: 130px;
+    max-height: 120px;
+    max-height: 100%;
+    background: #f2f2f2;
+}
 .blocTitle {
     padding: 30px 0;
 }
@@ -57,37 +102,36 @@ h3 {
     padding: 30px;
 }
 
-footer {
-    background-color: #666666;
-    height: 60px;
-    margin-top: 30px;
-    margin-bottom: 0;
-}
 
-footer .wording {
-    color: white;
-    padding-top: 20px;
+/*********Sidebar single announce*********/
+
+/* sidebar */
+.sidebar{
+    padding: 0;
 }
+.announceDetails,.announceModify{
+    background-color: white;
+    border: 1px solid #cccccc;
+    padding: 0;
+    max-height: 120px auto; 
+    margin-left: 20px;
+    margin-bottom: 20px;    
+}
+/* Bloc Announce */
 .blocAnnounce{
     background-color: white;
     border: 1px solid #cccccc; 
     padding: 0;  
 }
-.announceDetails{
-    background-color: white;
-    border: 1px solid #cccccc;
-    padding: 0;
-    max-height: 120px; 
-    margin-left: 20px;
-}
-
 .pseudo{
  padding: 10px 20px;
 }
 .bgName,.bgBloc{
     background: #e6e6e6;
-    padding: 15px;
-    
+    padding: 15px;    
+}
+.bgName{
+    width: 100%;
 }
 .borderBoxTop{
     border-top: 0.5px solid #ccc;
@@ -104,25 +148,8 @@ footer .wording {
     margin-top :40px;
     margin-bottom: 40px;
 }
-h1{
-    color: #989898;
-    font-family: "OpenSansBold",sans-serif;
-    font-size: 18px;
-    margin: 20px 0;    
-}
-
-h2{
-    padding: 10px 0;
-}
-.center{
-    text-align: center;
-}
 .blocImg{
-    padding-bottom: 30px;
-}
-p{
-    margin: 0;
-    padding: 0;
+ padding-bottom: 30px;
 }
 .description{
     height: 100px;
@@ -131,29 +158,43 @@ p{
 .description p{
     padding-top: 20px;
 }
-.thumbnail{
-    overflow: hidden;
-    width: 25%;
-    min-width: 130px;
-    max-height: 120px;
-    max-height: 100%;
-    background: #f2f2f2;
-}
 .price{
     color: #F56B2A;
     font-weight: bold;
     font-size: 18px;
     padding-left: 20px;
 }
+
+/*********Home page*********/
 .blocRight h2{
     color: #3872BB;
     font-weight: bold;
     font-size: 18px;
 }
+.announceList li:hover{
+    background: #f2f2f2;
+}
+.announceList li a{
+   text-decoration: none;
+}
 
+ /* Footer */
+footer {
+    background-color: #666666;
+    height: 60px;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+footer .wording {
+    color: white;
+    padding-top: 20px;
+}  
+
+/*********Media queries*********/
 @media (max-width: 767px) { 
-    .announceDetails{
+    .announceDetails,.announceModify{
         margin-left: 0;
+        margin-right: 0;
     }
  }
 

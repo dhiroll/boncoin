@@ -4,7 +4,18 @@
             <div class="row">
                 <div class="col-md-8">
                     <h1>Annonces : Ile-de-France</h1>
-                    <ul class="list-group announceList">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Toutes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/particuliers">Particuliers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/professionnels">Professionnels</a>
+                        </li>    
+                    </ul>
+                    <ul class="list-group announceList">  
                         <% for (var i = 0; i < announces.length; i++) { %>
                             <li class="list-group-item justify-content-between">
                                 <a class="announce_link" href="/annonce/<%= announces[i]._id %>">

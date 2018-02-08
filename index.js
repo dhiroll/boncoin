@@ -17,6 +17,8 @@ var mongoose = require("mongoose");
 mongoose.connect("mongodb://localhost:27017/loboncoin");
 
 var announcesSchema = new mongoose.Schema({
+  status_name: String,
+  offer_types : String,
   title_name : String,
   photo_url: String,
   nick_name: String,
@@ -35,6 +37,9 @@ app.get('/deposer', function (req, res) {
 });
 
 app.post('/deposer', upload.single('photo_url'), function (req, res) {
+  console.log(req.body);
+  var status_name = req.body.status_name;
+  var offer_types = req.body.offer_types;
   var title_name = req.body.title_name;
   var photo_url = req.file.filename;
   var nick_name = req.body.nick_name;
@@ -43,8 +48,11 @@ app.post('/deposer', upload.single('photo_url'), function (req, res) {
   var description = req.body.description;
   var phone_number = req.body.phone_number;
   var user_email = req.body.user_email;
- 
+  
+
   var newAnnounce = { 
+    status_name : status_name,
+    offer_types : offer_types,
     title_name : title_name,
     photo_url: photo_url,
     nick_name: nick_name,
@@ -105,6 +113,54 @@ app.get('/annonce/:id', function (req, res) {
       });
 
 });
+app.get('/demandes', function (req, res) {
+
+  Announces.find({ 'offer_types': "demandes" }, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    } 
+    res.render("home.ejs",{
+      announces: adAnnounce   
+    }); 
+  });
+
+});
+app.get('/offres', function (req, res) {
+
+  Announces.find({ 'offer_types': "offres" }, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    } 
+    res.render("home.ejs",{
+      announces: adAnnounce   
+    }); 
+  });
+
+});
+app.get('/professionnels', function (req, res) {
+
+  Announces.find({ 'status_name': "professionnel" }, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    } 
+    res.render("home.ejs",{
+      announces: adAnnounce   
+    }); 
+  });
+
+});
+app.get('/particuliers', function (req, res) {
+
+  Announces.find({ 'status_name': "particulier" }, function(err, adAnnounce) {
+    if (!err) {
+      console.log(adAnnounce);
+    } 
+    res.render("home.ejs",{
+      announces: adAnnounce   
+    }); 
+  });
+
+});
 
 app.get('/deposer/:id', function (req, res) {
   var id = req.params.id;
@@ -119,6 +175,8 @@ app.post('/deposer/:id', upload.single('photo_url'), function (req, res){
   if (!err) {
     console.log(adAnnounce);
    } 
+    adAnnounce.status_name = req.body.status_name.value;
+    adAnnounce.offer_types = req.body.offer_types.value;
     adAnnounce.title_name = req.body.title_name;
     adAnnounce.photo_url = req.file.filename;
     adAnnounce.nick_name = req.body.nick_name;
